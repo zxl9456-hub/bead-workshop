@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#f7eddf"/>
+  <meta name="description" content="在温暖的午后，拼一颗豆，收集一点可爱。多种图案、立体拼豆、自由创作，让心慢慢安静下来。"/>
+  <title>拼豆小工坊 · 午后手作时光</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <div class="ambient-leaf leaf-one" aria-hidden="true"></div><div class="ambient-leaf leaf-two" aria-hidden="true"></div>
+  <header class="header">
+    <a class="brand" href="./" aria-label="拼豆小工坊首页"><span class="brand-flower" aria-hidden="true">✿</span><div><h1>拼豆小工坊<span class="brand-dot">.</span></h1><span class="brand-en">LITTLE BEAD ATELIER</span></div></a>
+    <div class="header-note"><span class="small-sun">☼</span> 留一点时间，给小小的可爱</div>
+    <div class="header-actions"><div class="coin-pill" title="完成作品可以获得小金币"><span class="coin-icon">✦</span><strong id="coins">1,280</strong></div><button class="music-toggle" id="music-btn" aria-label="播放背景音乐" aria-pressed="false" title="猫爪小调 · 点击播放"><span aria-hidden="true">♪</span><span class="music-title">猫爪小调</span></button><button class="round-button" id="sound-btn" aria-label="开启音效" title="开启音效"></button><button class="round-button" id="settings-btn" aria-label="工坊设置" title="工坊设置"></button></div>
+  </header>
+  <main class="app">
+    <div class="workspace-heading">
+      <nav class="workspace-tabs" aria-label="工坊导航"><button class="tab active" id="work-tab"><span id="work-tab-icon"></span>拼豆工作台</button><button class="tab" id="collection-tab"><span id="collection-tab-icon"></span>我的作品<span class="collection-count" id="collection-count">0</span></button></nav>
+      <span class="save-status"><span></span><span id="save-text">进度已自动保存</span></span>
+    </div>
+    <div class="workspace">
+      <section class="workbench" aria-label="拼豆工作台">
+        <div class="board-heading"><div class="pattern-heading"><span class="tiny-paw" aria-hidden="true">✦</span><div><h2 id="pattern-name">午后小猫</h2><p id="pattern-subtitle">把阳光和花朵，送给小猫</p></div><span class="difficulty" id="difficulty">进阶</span></div><button class="text-button" id="change-pattern">换个图案 <span>↗</span></button></div>
+        <div class="board-stage" id="board-stage">
+          <div class="stage-topnote"><span>慢慢来，每一颗都很可爱</span><span class="note-star">✧</span></div>
+          <div class="side-tray tray-orange" aria-hidden="true"></div><div class="side-tray tray-cream" aria-hidden="true"></div><div class="side-tray tray-green" aria-hidden="true"></div>
+          <div class="loose-bead loose-one" aria-hidden="true"></div><div class="loose-bead loose-two" aria-hidden="true"></div><div class="loose-bead loose-three" aria-hidden="true"></div>
+          <div id="scene" role="application" tabindex="0" aria-label="立体拼豆板。点击或拖动放置豆粒，方向键移动位置，空格放置，数字键选色。"></div>
+          <div class="scene-error" id="scene-error" hidden></div>
+          <div class="board-controls"><button id="guide-btn" class="mini-pill active" aria-pressed="true"></button><div class="view-controls"><button id="zoom-out" aria-label="缩小拼板" title="缩小">−</button><span id="zoom-label">100%</span><button id="zoom-in" aria-label="放大拼板" title="放大">+</button><button id="reset-view" aria-label="复位视角" title="复位视角">↺</button></div></div>
+        </div>
+        <div class="tool-dock" aria-label="编辑工具"><div class="tools"><button class="tool active" data-tool="single" aria-pressed="true"><span class="tool-icon single-bead"></span><span>单颗</span><small>Q</small></button><button class="tool" data-tool="draw" aria-pressed="false"><span class="tool-icon" id="draw-icon"></span><span>连填</span><small>W</small></button><button class="tool" data-tool="erase" aria-pressed="false"><span class="tool-icon" id="erase-icon"></span><span>橡皮</span><small>E</small></button><button class="tool" id="undo-btn" aria-label="撤销 Ctrl+Z"><span class="tool-icon" id="undo-icon"></span><span>撤销</span><small>⌘Z</small></button></div><div class="tweezer" aria-hidden="true"><svg viewBox="0 0 220 68"><defs><linearGradient id="tw"><stop stop-color="#b9ded0"/><stop offset="1" stop-color="#6cae95"/></linearGradient></defs><path d="M15 26C52 13 96 18 196 46Q216 55 204 59L91 49 17 39 8 34 24 32 92 38 188 49 84 29 24 26Z" fill="url(#tw)" stroke="#78ad94" stroke-width="1.5"/><path d="M17 26C55 16 106 23 196 47M16 38L187 54" fill="none" stroke="#dcece0" stroke-width="3"/></svg><span>指尖的小小治愈</span></div></div>
+      </section>
+      <aside class="sidebar">
+        <section class="preview-card cream-card"><div class="card-label"><span>今日的小作品</span><span class="label-spark">✧</span></div><div class="preview-wrap"><span class="preview-spark spark-left">✧</span><canvas id="pattern-preview" width="320" height="320" aria-label="完整图案参考"></canvas><span class="preview-spark spark-right">✧</span></div><div class="progress-title"><h3>完成进度</h3><strong id="progress-percent">0<span>%</span></strong></div><div class="progress-track" role="progressbar" aria-label="完成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div><div class="progress-detail"><span id="progress-detail">0 / 0 颗</span><span id="progress-encouragement">一颗一颗，慢慢来</span></div></section>
+        <section class="palette-card cream-card"><div class="palette-heading"><h3>选择颜色</h3><span id="selected-color-name">蜜橘橙</span></div><div class="palette-grid" id="palette" aria-label="拼豆颜色"></div><div class="palette-note"><span class="mini-bead" id="palette-mini-bead"></span><span id="palette-help">选色后，点击对应编号的小空位</span></div></section>
+        <button class="primary-button" id="finish-btn"><span id="finish-text">继续拼豆</span><span class="button-arrow">↗</span></button>
+        <div class="sidebar-bottom"><button id="hint-btn"></button><span class="bottom-divider"></span><button id="restart-btn"></button></div>
+      </aside>
+    </div>
+    <section class="pattern-shelf" aria-label="图案选择"><div class="shelf-heading"><div><h3>下一份小可爱<span>图案收藏夹</span></h3><p>挑一个喜欢的，开始一段手作时光</p></div><button class="text-button" id="all-patterns">全部图案 <span>→</span></button></div><div class="pattern-strip" id="pattern-strip"></div></section>
+    <footer><span>✿ 拼一颗豆，收集一点可爱。</span><span>点击放置 · 连填可拖动 · 支持触屏操作</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="catalog-dialog" class="modal catalog-modal"><div class="modal-header"><div><span class="eyebrow">A LITTLE COLLECTION OF JOY</span><h2>挑一份小可爱</h2><p>每一个图案，都藏着一段慢下来的时光。</p></div><button class="close-button" data-close aria-label="关闭">×</button></div><div class="catalog-filters" id="catalog-filters"></div><div class="catalog-grid" id="catalog-grid"></div><div class="modal-footnote">✦ 切换图案时，当前进度会自动保存</div></dialog>
+  <dialog id="collection-dialog" class="modal collection-modal"><div class="modal-header"><div><span class="eyebrow">MADE WITH A LITTLE LOVE</span><h2>我的小小作品集</h2><p>亲手拼好的可爱，都好好收藏在这里。</p></div><button class="close-button" data-close aria-label="关闭">×</button></div><div id="collection-grid" class="collection-grid"></div></dialog>
+  <dialog id="settings-dialog" class="modal settings-modal"><div class="modal-header"><div><span class="eyebrow">MAKE YOURSELF AT HOME</span><h2>工坊小设置</h2></div><button class="close-button" data-close aria-label="关闭">×</button></div><label class="setting-row"><span>俏皮的工坊 BGM<small>木琴、玩具钢琴，还有豆粒跳舞的小节奏</small></span><input type="checkbox" id="music-toggle" role="switch" checked/></label><div class="music-volume-row"><label for="music-volume">背景音乐音量</label><output id="music-volume-value" for="music-volume">30%</output><input type="range" id="music-volume" min="0" max="100" step="1" value="30" aria-label="背景音乐音量"/></div><p class="music-status" id="music-status" role="status" aria-live="polite">开始操作后，小调会轻轻响起</p><label class="setting-row"><span>轻轻的拼豆音效<small>让每一次落豆，都有一点回应</small></span><input type="checkbox" id="sound-toggle" role="switch"/></label><label class="setting-row"><span>显示颜色编号<small>空位上的数字，是对应的色号</small></span><input type="checkbox" id="guide-toggle" role="switch" checked/></label><div class="keyboard-guide"><h3>指尖小指南</h3><p><kbd>方向键</kbd> 移动位置　<kbd>空格</kbd> 放豆</p><p><kbd>Q</kbd> 单颗　<kbd>W</kbd> 连填　<kbd>E</kbd> 橡皮</p><p><kbd>1–9</kbd> 选色　<kbd>⌘ / Ctrl + Z</kbd> 撤销</p><p>拖动连填时，一整笔可以一起撤销。</p></div></dialog>
+  <dialog id="confirm-dialog" class="modal confirm-modal"><div class="confirm-flower">✿</div><h2>重新拼一次？</h2><p>这张图案会回到空白拼板。<br/>其他图案和已收藏的作品会保留。</p><div class="confirm-actions"><button class="secondary-button" data-close>再想想</button><button class="primary-button" id="confirm-restart">从头开始</button></div></dialog>
+  <dialog id="complete-dialog" class="modal complete-modal"><button class="close-button" data-close aria-label="关闭">×</button><div class="pressing" id="pressing"><div class="iron">♨</div><h2>把可爱，轻轻定格</h2><p>正在熨烫你的小作品…</p><div class="press-track"><span></span></div></div><div id="completion-result" hidden><span class="eyebrow">A TINY MASTERPIECE, MADE BY YOU</span><h2>又收集了一份可爱！</h2><canvas id="completed-preview" width="400" height="400"></canvas><h3 id="completed-name"></h3><p id="completion-reward"></p><div class="complete-actions"><button class="secondary-button" id="download-btn">保存作品图片</button><button class="primary-button" id="next-pattern-btn">再拼一个 <span>→</span></button></div></div><div class="confetti" id="confetti" aria-hidden="true"></div></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
